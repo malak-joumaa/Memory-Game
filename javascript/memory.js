@@ -49,3 +49,13 @@ function upListener(color){
     }
 }
 
+function colorChange(color){
+    color.style.backgroundColor= "#747474";
+    color.style.boxShadow=" 0 0 10px #747474";
+};
+
+document.addEventListener("keypress", function(event) {
+	
+    setTimeout(downR,0);
+    setTimeout(upR,250);
+});
