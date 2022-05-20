@@ -16,12 +16,12 @@ body{
     display: flex;
     flex-wrap: wrap;
     height: 500px;
-    margin: 100px 35%;
+    margin: 100px 25%;
 }
 
 .square{
     width: 35%;
-    height: 39%;
+    height: 35%;
     border: 10px solid black;
     border-radius: 20%;
     margin-right: 10%;
