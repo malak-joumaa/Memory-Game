@@ -1,0 +1,41 @@
+body{
+    background-color: #011c38;
+}
+
+#instruction{
+    font-family: 'Press Start 2P', cursive;
+    color:#f9efb3
+}
+
+#container{
+    text-align: center;
+    margin-top: 100px;
+}
+
+#square-container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    margin: 100px 35%;
+}
+
+.square{
+    width: 35%;
+    height: 39%;
+    border: 10px solid black;
+    border-radius: 20%;
+    margin-right: 10%;
+}
+
+#square1{
+    background-color: #017501;
+}
+#square2{
+    background-color: #fe0000;
+}
+#square3{
+    background-color: #fdfe00;
+}
+#square4{
+    background-color: #0100ff;
+}
