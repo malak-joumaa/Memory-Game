@@ -67,20 +67,21 @@ var j=0;
 async function startGame(){
     j=0;
     count=0;
-    console.log("Here we go again");
     
      if (score<15){
         level.innerText = "Level "+score;
-        i=0;
-        await delay(1000);
+        //i=0;
+        await delay(700);
         sequence.push(Math.floor(Math.random() * 4));
         
-        while(i<sequence.length) {
-            setTimeout(colors[sequence[i]][0],0),
-            setTimeout(colors[sequence[i]][1],250)
-            await delay(700);
-            i++;
-        }
+        setTimeout(colors[sequence[sequence.length-1]][0],0),
+        setTimeout(colors[sequence[sequence.length-1]][1],250)
+        // while(i<sequence.length) {
+        //     setTimeout(colors[sequence[i]][0],0),
+        //     setTimeout(colors[sequence[i]][1],250)
+        //     await delay(700);
+        //     i++;
+        // }
         score++;
     }
     else{
@@ -105,7 +106,7 @@ async function startGame(){
             console.log("isCorrect");
 
         if(color!==divs[sequence[j]] && level.innerText != "You Win! Press Any Key to Play Again"){
-            console.log(score);
+            console.log(score+333);
             level.innerText = "Game Over, Press Any Key to Restart";
             document.body.style.backgroundColor= "red";
             setTimeout(function(){
@@ -122,7 +123,7 @@ async function startGame(){
             console.log("count: "+count+" j:"+j)
         }
 
-        if(count==sequence.length){
+        if(count==sequence.length && color===divs[sequence[j-1]]){
             console.log("start success");
             startGame();
         }
