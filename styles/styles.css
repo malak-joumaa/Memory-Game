@@ -2,9 +2,11 @@ body{
     background-color: #011c38;
 }
 
+/* h1 */
 #instruction{
     font-family: 'Press Start 2P', cursive;
-    color:#f9efb3
+    color:#f9efb3;
+    line-height: 1.5em;
 }
 
 #container{
@@ -15,16 +17,17 @@ body{
 #square-container{
     display: flex;
     flex-wrap: wrap;
-    height: 500px;
-    margin: 100px 25%;
+    width: 550px;
+    margin: 50px auto;
 }
 
 .square{
-    width: 35%;
-    height: 35%;
+    width: 200px;
+    height: 200px;
     border: 10px solid black;
     border-radius: 20%;
     margin-right: 10%;
+    margin-top: 50px;
 }
 
 #square1{
@@ -38,4 +41,18 @@ body{
 }
 #square4{
     background-color: #0100ff;
+}
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+
+    #square-container{
+        width: 380px;
+    }
+    .square{
+        width: 150px;
+        height: 150px;
+        margin-right: 5%;
+        margin-top: 25px;
+    }
 }
