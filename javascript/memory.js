@@ -53,15 +53,18 @@ const delay = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
 
-var score=0;
+var score=1;
 var count = 0;
 var i = 0;
 var j=0;
 // START GAME
 async function startGame(){
+    if(score)
+    j=0;
+    count=0;
     console.log("Here we go again");
-    score++;
-     if (score<3){
+    
+     if (score<5){
         level.innerText = "Level "+score;
         i=0;
         await delay(1000);
@@ -70,19 +73,18 @@ async function startGame(){
         while(i<sequence.length) {
             setTimeout(colors[sequence[i]][0],0),
             setTimeout(colors[sequence[i]][1],250)
-            await delay(1000);
+            await delay(700);
             i++;
         }
-        j=0;
-        count=0;
+        score++;
     }
     else{
         level.innerText = "You Win! Press Any Key to Play Again";
-        score=0;
+        score=1;
         sequence=[];
         document.addEventListener("keypress", startGame);
     }
-    }
+}
     const clickR = isCorrect(red);
     const clickG = isCorrect(green);
     const clickB = isCorrect(blue);
@@ -96,18 +98,21 @@ async function startGame(){
     function isCorrect(color){
         return function inner(event){
             console.log("isCorrect");
-        if(color===divs[sequence[j]]){
+
+        if(color!==divs[sequence[j]] && level.innerText != "You Win! Press Any Key to Play Again"){
+            console.log(score);
+            console.log("HEREE");
+            level.innerText = "Game Over, Press Any Key to Restart";                
+            score=1;
+            sequence=[];
+            document.addEventListener("keypress", startGame);
+        }
+        else if(color===divs[sequence[j]]){
             count++;
             j++;
             console.log("count: "+count+" j:"+j)
         }
-        else if(color!==divs[sequence[j]]){
-            console.log(score);
-            level.innerText = "Game Over, Press Any Key to Restart";
-            score=0;
-            sequence=[];
-            document.addEventListener("keypress", startGame);
-        }
+
         if(count==sequence.length){
             console.log("start success");
             startGame();
