@@ -1,17 +1,22 @@
-let green = document.getElementById("square1");
-let red = document.getElementById("square2");
-let yellow = document.getElementById("square3");
-let blue = document.getElementById("square4");
-let level = document.getElementById("instruction");
+var green = document.getElementById("square1");
+var red = document.getElementById("square2");
+var yellow = document.getElementById("square3");
+var blue = document.getElementById("square4");
+var level = document.getElementById("instruction");
+var conatiner = document.getElementById("container");
+var soundR = new Audio("assets/sounds/sounds/red.mp3");
+var soundG = new Audio("assets/sounds/sounds/green.mp3");
+var soundY = new Audio("assets/sounds/sounds/yellow.mp3");
+var soundB = new Audio("assets/sounds/sounds/blue.mp3");
+var soundGO = new Audio("assets/sounds/sounds/wrong.mp3");
 
-
-const downR = downListener(red)
+const downR = downListener(red,soundR)
 const upR = upListener(red)
-const downG = downListener(green)
+const downG = downListener(green,soundG)
 const upG = upListener(green)
-const downB = downListener(blue)
+const downB = downListener(blue,soundB)
 const upB = upListener(blue)
-const downY = downListener(yellow)
+const downY = downListener(yellow,soundY)
 const upY = upListener(yellow)
 
 red.addEventListener('mousedown',downR);
@@ -26,11 +31,12 @@ blue.addEventListener('mouseup',upB);
 yellow.addEventListener('mousedown',downY);
 yellow.addEventListener('mouseup',upY);
 
-function downListener(color){
+function downListener(color,sound){
     return function inner(event){
         console.log(event)
         color.style.backgroundColor= "#747474";
         color.style.boxShadow=" 0 0 10px #747474";
+        sound.play();
     }
 }
 
@@ -59,12 +65,11 @@ var i = 0;
 var j=0;
 // START GAME
 async function startGame(){
-    if(score)
     j=0;
     count=0;
     console.log("Here we go again");
     
-     if (score<5){
+     if (score<15){
         level.innerText = "Level "+score;
         i=0;
         await delay(1000);
@@ -101,8 +106,12 @@ async function startGame(){
 
         if(color!==divs[sequence[j]] && level.innerText != "You Win! Press Any Key to Play Again"){
             console.log(score);
-            console.log("HEREE");
-            level.innerText = "Game Over, Press Any Key to Restart";                
+            level.innerText = "Game Over, Press Any Key to Restart";
+            document.body.style.backgroundColor= "red";
+            setTimeout(function(){
+                document.body.style.backgroundColor= null;
+            }, 300);
+            soundGO.play();              
             score=1;
             sequence=[];
             document.addEventListener("keypress", startGame);
