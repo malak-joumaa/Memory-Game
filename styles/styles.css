@@ -17,7 +17,7 @@ body{
 #square-container{
     display: flex;
     flex-wrap: wrap;
-    width: 550px;
+    width: 490px;
     margin: 50px auto;
 }
 
@@ -26,18 +26,19 @@ body{
     height: 200px;
     border: 10px solid black;
     border-radius: 20%;
-    margin-right: 10%;
     margin-top: 50px;
 }
 
 #square1{
     background-color: #017501;
+    margin-right: 50px;
 }
 #square2{
     background-color: #fe0000;
 }
 #square3{
     background-color: #fdfe00;
+    margin-right: 50px;
 }
 #square4{
     background-color: #0100ff;
@@ -52,7 +53,12 @@ body{
     .square{
         width: 150px;
         height: 150px;
-        margin-right: 5%;
         margin-top: 25px;
+    }
+    #square1{
+        margin-right: 25px;
+    }
+    #square3{
+        margin-right: 25px;
     }
 }
